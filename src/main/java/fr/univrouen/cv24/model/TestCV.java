@@ -1,47 +1,122 @@
 package fr.univrouen.cv24.model;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
-import jakarta.xml.bind.annotation.*;
+@Entity
+@XmlRootElement(name = "TestCV", namespace = "http://univ.fr/cv24")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class TestCV {
 
-@XmlRootElement(name = "TestCV")
-@XmlAccessorType(XmlAccessType.NONE)
-public class TestCV implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	private static final long serialVersionUID = 2024L;
-	private static int compteur = 1;
-	
-	@XmlAttribute
-	private Integer id;
-	
-	@XmlElement
-	private String nom;
-	
-	@XmlElement
-	private String date;
-	
-	@XmlElement
-	private String prenom;
-	
-	@XmlElement
-	private String mel;
-	
-	public TestCV(String nom, String prenom, String date, String mel) {
-		super();
-		this.id = compteur++;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.date = date;
-		this.mel = mel;
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="identite",namespace = "http://univ.fr/cv24")
+	private Identite identite;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name = "objectif-statut", namespace = "http://univ.fr/cv24")
+	private ObjectifStatut objectifStatut;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name= "profs", namespace = "http://univ.fr/cv24")
+	private Profs profs;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="competencesList",namespace = "http://univ.fr/cv24")
+	private CompetencesList competencesList;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="diplomes",namespace = "http://univ.fr/cv24")
+	private Diplomes diplomes;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="certifs",namespace = "http://univ.fr/cv24")
+	private Certifs certifs;
+
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="langues",namespace = "http://univ.fr/cv24")
+	private Langues langues;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@XmlElement(name="autre",namespace = "http://univ.fr/cv24")
+	private Autre autre;
+
+	public Long getId() {
+		return id;
 	}
-	
-	public TestCV() {
-		
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	@Override
-	public String toString() {
-		return "CV (" + id + ") [" + nom + " " + prenom
-				+ " ,Date nais=" + date + " ,mel=" + mel ;
+
+	public Identite getIdentite() {
+		return identite;
+	}
+
+	public void setIdentite(Identite identite) {
+		this.identite = identite;
+	}
+
+	public ObjectifStatut getObjectifStatut() {
+		return objectifStatut;
+	}
+
+	public void setObjectifStatut(ObjectifStatut objectifStatut) {
+		this.objectifStatut = objectifStatut;
+	}
+
+	public Profs getProfs() {
+		return profs;
+	}
+
+	public void setProfs(Profs profs) {
+		this.profs = profs;
+	}
+
+	public CompetencesList getCompetencesList() {
+		return competencesList;
+	}
+
+	public void setCompetencesList(CompetencesList competencesList) {
+		this.competencesList = competencesList;
+	}
+
+	public Diplomes getDiplomes() {
+		return diplomes;
+	}
+
+	public void setDiplomes(Diplomes diplomes) {
+		this.diplomes = diplomes;
+	}
+
+	public void setCertifs(Certifs certifs) {
+		this.certifs = certifs;
+	}
+	public Certifs getCertifs(){
+		return certifs;
+	}
+
+	public Langues getLangues() {
+		return langues;
+	}
+
+	public void setLangues(Langues langues) {
+		this.langues = langues;
+	}
+
+	public Autre getAutre() {
+		return autre;
+	}
+
+	public void setAutre(Autre autre) {
+		this.autre = autre;
 	}
 }

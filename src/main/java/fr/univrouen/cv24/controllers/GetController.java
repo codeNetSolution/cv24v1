@@ -1,19 +1,47 @@
 package fr.univrouen.cv24.controllers;
 
 
+import fr.univrouen.cv24.model.CV.CVList;
+import jakarta.xml.bind.Marshaller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
+import fr.univrouen.cv24.Repository.*;
 
 import fr.univrouen.cv24.util.Fichier;
 import fr.univrouen.cv24.model.TestCV;
+import jakarta.xml.bind.JAXBContext;
+
+import java.io.StringWriter;
+import java.util.List;
 
 @RestController
 public class GetController {
-	@GetMapping("/resume")
-	public String getListCVinXML() {
-		return "Envoi de la liste des CV";
-	}
+	
+	@Autowired
+    private CVRepository cvRepository;
+	
+	
+	 @GetMapping(value = "/resume/xml", produces = MediaType.APPLICATION_XML_VALUE)
+	 public String getListCVinXML() {
+		 try {
+			 List<TestCV> cvs = cvRepository.findAll();
+
+			 JAXBContext jaxbContext = JAXBContext.newInstance(CVList.class);
+			 Marshaller marshaller = jaxbContext.createMarshaller();
+			 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			 CVList cvList = new CVList(cvs);
+			 StringWriter writer = new StringWriter();
+			 marshaller.marshal(cvList, writer);
+
+			 return writer.toString();
+		 } catch (Exception e) {
+			 return "<error>Erreur lors de la génération du XML</error>";
+		 }
+	 }
+	
 	@GetMapping("/cvid")
 	public String getCVinXML(
 			@RequestParam(value = "texte") String texte) {
@@ -32,11 +60,13 @@ public class GetController {
 	    Fichier fichier = new Fichier();
 	    return fichier.loadFileXML("smallCV.xml");
 	}
-	
-	@RequestMapping(value="/testxml", produces=MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody TestCV getXML() {
-		TestCV cv = new TestCV("HAMILTON", "MARGARET", "1969/07/21", "Appollo11@nasa.us");
-		
-		return cv;
+
+
+	@GetMapping("/cv24/resume")
+	public String showCVs(Model model) {
+		model.addAttribute("cvs", cvRepository.findAll());
+		return "cvs"; // Le nom du fichier template sans l'extension .html
 	}
+	
+
 }

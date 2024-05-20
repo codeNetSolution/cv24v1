@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" href="/css/styleHome.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Bienvenue sur CV24 de Abdelkrim SAIDOUN</h1>
+        </div>
+    </header>
+
+   <div class="container content content-with-logo">
+    <div class="text-content">
+        <h2 th:text="${projectName}">Nom du Projet</h2>
+        <p th:text="'Version: ' + ${projectVersion}">Version du projet</p>
+        <h3>Membres de l'équipe:</h3>
+        <ul>
+            <li th:each="member : ${teamMembers}" th:text="${member}">Nom Membre</li>
+        </ul>
+    </div>
+    <div>
+        <img th:src="@{${universityLogo}}" alt="Logo Université" class="logo"/>
+    </div>
+</div>
+
+
+    <div class="footer">
+        Abdelkrim SAIDOUN @ Université de Rouen
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+FROM mariadb:latest
+
+# Définir le mot de passe root (sécurisez mieux pour la production)
+ENV MARIADB_ROOT_PASSWORD=admin
+
+# Copie du script de création de la base de données
+COPY setup.sql /docker-entrypoint-initdb.d/
