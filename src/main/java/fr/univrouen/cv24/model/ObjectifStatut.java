@@ -9,6 +9,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 
 @Entity
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ObjectifStatut {
 

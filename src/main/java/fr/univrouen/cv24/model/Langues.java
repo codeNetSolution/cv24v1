@@ -1,11 +1,6 @@
 package fr.univrouen.cv24.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -13,6 +8,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
+@Table(name = "langues_group")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Langues {
 

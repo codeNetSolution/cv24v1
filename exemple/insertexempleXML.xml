@@ -1,0 +1,57 @@
+ <TestCV xmlns="http://univ.fr/cv24">
+            <identite>
+                <genre>M.</genre>
+                <firstame>xxxxqq</firstame>
+                <lastname>sssssss</lastname>
+                <tel>07 52 85 10 31</tel>
+                <mail>karim@gmail.com</mail>
+            </identite>
+            <objectif-statut>
+                <initule>chef de projet</initule>
+                <typeContrat>cdi</typeContrat>
+            </objectif-statut>
+            <profs>
+                <prof>
+                    <detail>dddddd</detail>
+                    <datedeb>2024-05-15</datedeb>
+                    <datefin>2024-05-31</datefin>
+                    <titre>sssff</titre>
+                </prof>
+            </profs>
+            <competencesList>
+                <competences>
+                    <titre>qdqd</titre>
+                    <datedeb>2024-05-08</datedeb>
+                    <datefin>2024-05-30</datefin>
+                </competences>
+            </competencesList>
+            <diplomes>
+                <diplome-niveau>
+                    <intitule>dqdqd</intitule>
+                    <niveau>5</niveau>
+                    <date>2024-05-07</date>
+                    <institut>bac</institut>
+                </diplome-niveau>
+            </diplomes>
+            <certifs>
+                <certif>
+                    <datedeb>2024-05-15</datedeb>
+                    <titre>anglais</titre>
+                </certif>
+            </certifs>
+            <langues>
+                <langue>
+                    <lang>français</lang>
+                    <cert>fr</cert>
+                    <nivs>10</nivs>
+                    <nivi>C2</nivi>
+                </langue>
+            </langues>
+
+            <autre>
+                <divers>
+                    <divers>qdqsfqf</divers>
+                    <comment>qsdqsd</comment>
+                </divers>
+            </autre>
+        </TestCV>

@@ -8,6 +8,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
+@Table(name = "competances_group")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CompetencesList {
 

@@ -2,6 +2,7 @@ package fr.univrouen.cv24.controllers;
 
 
 import fr.univrouen.cv24.model.CV.CVList;
+import fr.univrouen.cv24.services.CVService;
 import jakarta.xml.bind.Marshaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class GetController {
 	
 	@Autowired
     private CVRepository cvRepository;
+
+	@Autowired
+	private CVService cvService;
 	
 	
 	 @GetMapping(value = "/resume/xml", produces = MediaType.APPLICATION_XML_VALUE)
@@ -64,7 +68,10 @@ public class GetController {
 
 	@GetMapping("/cv24/resume")
 	public String showCVs(Model model) {
-		model.addAttribute("cvs", cvRepository.findAll());
+		List<TestCV> cvs = cvService.getAllCVs();
+		model.addAttribute("cvs", cvs);
+		System.out.println("cvs RECEIVED: " + cvs); // Log the raw XML data
+
 		return "cvs"; // Le nom du fichier template sans l'extension .html
 	}
 	
