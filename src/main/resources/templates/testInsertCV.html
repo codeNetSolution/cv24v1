@@ -62,17 +62,20 @@
     </fieldset>
 
     <!-- Diplômes -->
-    <fieldset>
+    <fieldset id="diplomesFieldset">
         <legend>Diplômes</legend>
-        <label for="diplomeIntitule">Intitulé:</label>
-        <input type="text" id="diplomeIntitule"><br><br>
-        <label for="diplomeNiveau">Niveau:</label>
-        <input type="number" id="diplomeNiveau"><br><br>
-        <label for="diplomeDate">Date:</label>
-        <input type="date" id="diplomeDate"><br><br>
-        <label for="diplomeInstitut">Institut:</label>
-        <input type="text" id="diplomeInstitut"><br><br>
+        <div class="diplome">
+            <label for="diplomeIntitule">Intitulé:</label>
+            <input type="text" class="diplomeIntitule"><br><br>
+            <label for="diplomeNiveau">Niveau:</label>
+            <input type="number" class="diplomeNiveau"><br><br>
+            <label for="diplomeDate">Date:</label>
+            <input type="date" class="diplomeDate"><br><br>
+            <label for="diplomeInstitut">Institut:</label>
+            <input type="text" class="diplomeInstitut"><br><br>
+        </div>
     </fieldset>
+    <button type="button" onclick="addDiplome()">Ajouter un Diplôme</button><br><br>
 
     <!-- Certifications -->
     <fieldset>
@@ -110,11 +113,27 @@
     <label for="autreDivers">Divers:</label>
     <input type="text" id="autreDivers"><br><br>
 
-
     <button type="button" onclick="submitCV()">Envoyer CV</button>
 </form>
 
 <script>
+    function addDiplome() {
+        const diplomeFieldset = document.getElementById('diplomesFieldset');
+        const newDiplomeDiv = document.createElement('div');
+        newDiplomeDiv.className = 'diplome';
+        newDiplomeDiv.innerHTML = `
+            <label for="diplomeIntitule">Intitulé:</label>
+            <input type="text" class="diplomeIntitule"><br><br>
+            <label for="diplomeNiveau">Niveau:</label>
+            <input type="number" class="diplomeNiveau"><br><br>
+            <label for="diplomeDate">Date:</label>
+            <input type="date" class="diplomeDate"><br><br>
+            <label for="diplomeInstitut">Institut:</label>
+            <input type="text" class="diplomeInstitut"><br><br>
+        `;
+        diplomeFieldset.appendChild(newDiplomeDiv);
+    }
+
     function submitCV() {
         const genre = document.getElementById('genre').value;
         const prenom = document.getElementById('prenom').value;
@@ -134,10 +153,22 @@
         const competenceStart = document.getElementById('competenceStart').value;
         const competenceEnd = document.getElementById('competenceEnd').value;
 
-        const diplomeIntitule = document.getElementById('diplomeIntitule').value;
-        const diplomeNiveau = document.getElementById('diplomeNiveau').value;
-        const diplomeDate = document.getElementById('diplomeDate').value;
-        const diplomeInstitut = document.getElementById('diplomeInstitut').value;
+        const diplomeElements = document.querySelectorAll('.diplome');
+        let diplomesXML = '';
+        diplomeElements.forEach(diplome => {
+            const diplomeIntitule = diplome.querySelector('.diplomeIntitule').value;
+            const diplomeNiveau = diplome.querySelector('.diplomeNiveau').value;
+            const diplomeDate = diplome.querySelector('.diplomeDate').value;
+            const diplomeInstitut = diplome.querySelector('.diplomeInstitut').value;
+            diplomesXML += `
+                <diplome-niveau>
+                    <intitule>${diplomeIntitule}</intitule>
+                    <niveau>${diplomeNiveau}</niveau>
+                    <date>${diplomeDate}</date>
+                    <institut>${diplomeInstitut}</institut>
+                </diplome-niveau>
+            `;
+        });
 
         const certifTitre = document.getElementById('certifTitre').value;
         const certifDateDeb = document.getElementById('certifDateDeb').value;
@@ -148,7 +179,7 @@
         const toeicScore = document.getElementById('toeicScore').value;
         const clesLevel = document.getElementById('clesLevel').value;
 
-        const autreTitre = document.getElementById('autreTitre').value; // Assurez-vous que ce champ existe dans votre formulaire
+        const autreTitre = document.getElementById('autreTitre').value;
         const autreComment = document.getElementById('autreComment').value;
 
         const autreDivers = document.getElementById('autreDivers').value;
@@ -183,12 +214,7 @@
                 </competences>
             </competencesList>
             <diplomes>
-                <diplome-niveau>
-                    <intitule>${diplomeIntitule}</intitule>
-                    <niveau>${diplomeNiveau}</niveau>
-                    <date>${diplomeDate}</date>
-                    <institut>${diplomeInstitut}</institut>
-                </diplome-niveau>
+                ${diplomesXML}
             </diplomes>
             <certifs>
                 <certif>

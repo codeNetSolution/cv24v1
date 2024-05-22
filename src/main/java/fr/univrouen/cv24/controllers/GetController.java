@@ -66,14 +66,7 @@ public class GetController {
 	}
 
 
-	@GetMapping("/cv24/resume")
-	public String showCVs(Model model) {
-		List<TestCV> cvs = cvService.getAllCVs();
-		model.addAttribute("cvs", cvs);
-		System.out.println("cvs RECEIVED: " + cvs); // Log the raw XML data
 
-		return "cvs"; // Le nom du fichier template sans l'extension .html
-	}
 	
 
 }

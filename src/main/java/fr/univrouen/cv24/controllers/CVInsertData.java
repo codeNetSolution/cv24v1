@@ -1,6 +1,7 @@
 package fr.univrouen.cv24.controllers;
 
 import fr.univrouen.cv24.Repository.CVRepository;
+import fr.univrouen.cv24.Repository.DiplomesRepository;
 import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.services.XmlValidationService;
 import jakarta.xml.bind.helpers.DefaultValidationEventHandler;
@@ -18,6 +19,7 @@ import javax.xml.XMLConstants;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = RequestMethod.POST)
@@ -26,6 +28,9 @@ public class CVInsertData {
 
     @Autowired
     private CVRepository cvRepository;
+
+    @Autowired
+    private DiplomesRepository diplomesRespository;
 
     @Autowired
     private XmlValidationService xmlValidationService;
@@ -47,14 +52,19 @@ public class CVInsertData {
             StringReader reader = new StringReader(xmlData);
             TestCV cv = (TestCV) unmarshaller.unmarshal(reader);
 
-            System.out.println("Deserialized Object: " + cv); // Check what the deserialized object looks like
-
             Identite identite = cv.getIdentite();
             if (cvRepository.existsByIdentite_GenreAndIdentite_NomAndIdentite_PrenomAndIdentite_Telephone(identite.getGenre(), identite.getNom(), identite.getPrenom(), identite.getTelephone())) {
                 return ResponseEntity.ok(createResponse(cv.getId(), "ERROR", "DUPLICATED", cv));
             }
-
             cv = cvRepository.save(cv);
+            List<Diplome> listTest = diplomesRespository.findAll();
+            for(Diplome dip : listTest) {
+                if(dip.getDiplomesId() == null) {
+                    dip.setDiplomesId(cv.getId());
+                    diplomesRespository.save(dip);
+                    cvRepository.save(cv);
+                }
+            }
             return ResponseEntity.ok(createResponse(cv.getId(), "INSERTED", null, cv));
         } catch (Exception e) {
             e.printStackTrace();

@@ -65,8 +65,10 @@ CREATE TABLE IF NOT EXISTS diplomes (
     cv_id INT,
     diplomes_id INT,
     FOREIGN KEY (cv_id) REFERENCES cvs(id) ON DELETE CASCADE,
-    FOREIGN KEY (id) REFERENCES diplomes_group(id) ON DELETE CASCADE
+    FOREIGN KEY (diplomes_id) REFERENCES diplomes_group(id) ON DELETE CASCADE
 );
+
+   -- FOREIGN KEY (id) REFERENCES diplomes_group(id) ON DELETE CASCADE
 
 -- Table pour les groupes de certificats
 CREATE TABLE IF NOT EXISTS certifs_group (
@@ -152,7 +154,3 @@ CREATE TABLE IF NOT EXISTS professions (
 -- Add the foreign key constraint for 'autre_id' in 'divers' table
 ALTER TABLE divers
 ADD CONSTRAINT fk_autre_id FOREIGN KEY (autre_id) REFERENCES autre(id);
-
--- Ajouter la clé étrangère pour diplomes_id après avoir créé les tables
-ALTER TABLE diplomes
-ADD CONSTRAINT fk_diplomes_group_id FOREIGN KEY (diplomes_id) REFERENCES diplomes_group(id);

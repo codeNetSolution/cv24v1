@@ -32,7 +32,7 @@ public class TestCV {
 	@XmlElement(name="competencesList",namespace = "http://univ.fr/cv24")
 	private CompetencesList competencesList;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@XmlElement(name="diplomes",namespace = "http://univ.fr/cv24")
 	private Diplomes diplomes;
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class Diplomes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "diplomes", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "diplomes", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @XmlElement(name = "diplome-niveau", namespace = "http://univ.fr/cv24")
-    private List<Diplome> diplomes;
+    private List<Diplome> diplome;
 
     public Long getId() {
         return id;
@@ -29,10 +30,10 @@ public class Diplomes {
     }
 
     public List<Diplome> getDiplomes() {
-        return diplomes;
+        return diplome;
     }
 
     public void setDiplomes(List<Diplome> diplomes) {
-        this.diplomes = diplomes;
+        this.diplome = diplomes;
     }
 }

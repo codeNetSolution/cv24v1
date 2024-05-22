@@ -26,9 +26,6 @@ public class Diplome {
     @XmlElement(name = "institut", namespace = "http://univ.fr/cv24")
     private String institut;
 
-    @ManyToOne
-    @JoinColumn(name = "diplomes_id")
-    private Diplomes diplomes;
 
     @ManyToOne
     @JoinColumn(name = "cv_id")
@@ -36,6 +33,21 @@ public class Diplome {
 
     public Long getId() {
         return id;
+    }
+
+    @Column(name = "diplomes_id")
+    private Long diplomesId;
+
+    @ManyToOne
+    @JoinColumn(name = "diplomes_id", insertable = false, updatable = false)
+    private Diplomes diplomes;
+
+
+    @PrePersist
+    private void prePersist() {
+        if (this.diplomes != null) {
+            this.diplomesId = this.diplomes.getId();
+        }
     }
 
     public void setId(Long id) {
@@ -74,13 +86,6 @@ public class Diplome {
         this.institut = institut;
     }
 
-    public Diplomes getDiplomes() {
-        return diplomes;
-    }
-
-    public void setDiplomes(Diplomes diplomes) {
-        this.diplomes = diplomes;
-    }
 
     public TestCV getTestCV() {
         return testCV;
@@ -88,5 +93,21 @@ public class Diplome {
 
     public void setTestCV(TestCV testCV) {
         this.testCV = testCV;
+    }
+
+    public Long getDiplomesId() {
+        return diplomesId;
+    }
+
+    public void setDiplomesId(Long diplomesId) {
+        this.diplomesId = diplomesId;
+    }
+
+    public Diplomes getDiplomes() {
+        return diplomes;
+    }
+
+    public void setDiplomes(Diplomes diplomes) {
+        this.diplomes = diplomes;
     }
 }
