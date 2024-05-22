@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd ../dataBase/
 # Arrêter le conteneur cvxml s'il est en cours d'exécution
 docker stop cvxml
 
