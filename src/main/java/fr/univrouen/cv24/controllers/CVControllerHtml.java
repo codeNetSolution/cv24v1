@@ -13,7 +13,7 @@ import fr.univrouen.cv24.Repository.CVRepository;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/cv24/html")
+
 public class CVControllerHtml {
 
     @Autowired

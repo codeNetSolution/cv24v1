@@ -14,7 +14,7 @@ import java.io.StringWriter;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cv24/xml")
+
 public class CVController {
 
     @Autowired

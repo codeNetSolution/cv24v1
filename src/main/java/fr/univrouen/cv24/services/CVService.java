@@ -3,6 +3,7 @@ package fr.univrouen.cv24.services;
 import fr.univrouen.cv24.Repository.CVRepository;
 import fr.univrouen.cv24.Repository.DiplomesRepository;
 import fr.univrouen.cv24.Repository.ObjectifsRepository;
+import fr.univrouen.cv24.dto.DiplomeDTO;
 import fr.univrouen.cv24.model.Diplome;
 import fr.univrouen.cv24.model.ObjectifStatut;
 import fr.univrouen.cv24.model.TestCV;
@@ -49,6 +50,13 @@ public class CVService {
         return testCVRepository.findAll();
     }
 
+    public List<TestCV> getTestCVById(Long id){
+        assert testCVRepository.findById(id).isPresent();
+        List<TestCV> listTestCv = new ArrayList<>();
+        listTestCv.add(testCVRepository.findById(id).get());
+        return listTestCv;
+    }
+
     public List<Diplome> getAllDiplomesById(Long id) {
         List<Diplome> result = new ArrayList<>(List.of());
         if(diplomesRepository.existsById(id)){
@@ -79,6 +87,25 @@ public class CVService {
 
         return result;
     }
+
+    public List<DiplomeDTO> getAllDiplomeHighLevel(List<DiplomeDTO> diplomeDTOS) {
+        List<DiplomeDTO> result = new ArrayList<>(List.of());
+
+        if(diplomeDTOS.isEmpty()) {
+            return result;
+        }
+        DiplomeDTO diplomeMaxNiveau = diplomeDTOS.get(0);
+        for(DiplomeDTO diplome : diplomeDTOS){
+            if(diplome.getNiveau() > diplomeMaxNiveau.getNiveau()) {
+                diplomeMaxNiveau = diplome;
+            }
+        }
+        result.add(diplomeMaxNiveau);
+
+        return result;
+    }
+
+
 
     public ObjectifStatut getObjectifsStatutById(Long id){
         ObjectifStatut objectifStatut = null;

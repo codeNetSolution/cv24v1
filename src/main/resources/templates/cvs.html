@@ -9,20 +9,17 @@
 <h1>Liste des CVs</h1>
 <div th:each="cv24 : ${cv24s}">
     <div>
-        <h2>ID: </h2><h2 th:text="${cv24.cv.identite.id}"></h2>
+        <h2>ID: </h2><h2 th:text="${cv24.cv.id}"></h2>
+        <p><h2>Objectif:</h2> <span th:text="${cv24.objectifStatut.initule}"></span></p>
         <h2>Identité: </h2>
         <div>
             <p><strong>Genre:</strong> <span th:text="${cv24.cv.identite.genre}"></span></p>
             <h3>Prénom et Nom :</h3><h3 th:text="${cv24.cv.identite.prenom + ' ' + cv24.cv.identite.nom}"></h3>
         </div>
-        <p><h2>Objectif:</h2> <span th:text="${cv24.objectifStatut.initule}"></span></p>
         <h2>Diplôme le plus élevé:</h2>
         <div th:each="diplome : ${cv24.diplomes}">
-            <p><strong>ID:</strong> <span th:text="${diplome.id}"></span></p>
             <p><strong>Intitulé:</strong> <span th:text="${diplome.intitule}"></span></p>
             <p><strong>Niveau:</strong> <span th:text="${diplome.niveau}"></span></p>
-            <p><strong>Date:</strong> <span th:text="${diplome.date}"></span></p>
-            <p><strong>Institut:</strong> <span th:text="${diplome.institut}"></span></p>
         </div>
     </div>
 </div>
