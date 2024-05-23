@@ -1,0 +1,67 @@
+/* Style général */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* En-tête */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Conteneur principal pour chaque CV */
+.cv-container .cv-card {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Effet de survol pour les CV */
+.cv-container .cv-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Titres */
+h2, h3 {
+    color: #343a40;
+    margin-top: 0;
+}
+
+/* Sous-titres et contenu */
+p {
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* Disposition flex pour les informations de base */
+.identity {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.identity p {
+    flex: 1 1 100%;
+    margin: 5px 0;
+}
+
+/* Style des informations sur les diplômes */
+.diplomas {
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.diplomas p {
+    margin: 5px 0;
+}

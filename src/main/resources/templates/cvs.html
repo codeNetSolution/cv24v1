@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des CV</title>
-    <link rel="stylesheet" href="/css/styleHome.css">
+    <link rel="stylesheet" href="/css/cvsPage.css">
 </head>
 <body>
 <h1>Liste des CVs</h1>
-<div th:each="cv24 : ${cv24s}">
-    <div>
-        <h2>ID: </h2><h2 th:text="${cv24.cv.id}"></h2>
+<div class="cv-container" th:each="cv24 : ${cv24s}">
+    <div class="cv-card">
         <p><h2>Objectif:</h2> <span th:text="${cv24.objectifStatut.initule}"></span></p>
+        <h2>ID: </h2><h2 th:text="${cv24.cv.id}"></h2>
         <h2>Identité: </h2>
-        <div>
+        <div class="identity">
             <p><strong>Genre:</strong> <span th:text="${cv24.cv.identite.genre}"></span></p>
             <h3>Prénom et Nom :</h3><h3 th:text="${cv24.cv.identite.prenom + ' ' + cv24.cv.identite.nom}"></h3>
         </div>
         <h2>Diplôme le plus élevé:</h2>
-        <div th:each="diplome : ${cv24.diplomes}">
+        <div class="dipolmas" th:each="diplome : ${cv24.diplomes}">
             <p><strong>Intitulé:</strong> <span th:text="${diplome.intitule}"></span></p>
             <p><strong>Niveau:</strong> <span th:text="${diplome.niveau}"></span></p>
         </div>

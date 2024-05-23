@@ -3,8 +3,6 @@ package fr.univrouen.cv24.dto;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import fr.univrouen.cv24.model.Diplome;
 import fr.univrouen.cv24.model.TestCV;
