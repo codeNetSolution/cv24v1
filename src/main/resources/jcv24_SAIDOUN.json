@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "9b4ac388-9a8d-4c43-b6b2-246c287eb8af",
+		"name": "XML_ABDELKRIM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32693740"
+	},
+	"item": [
+		{
+			"name": "Page d'acceuil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Page Help",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/help",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"help"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert CV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " <TestCV xmlns=\"http://univ.fr/cv24\">\n            <identite>\n                <genre>M.</genre>\n                <firstame>dsdfssf</firstame>\n                <lastname>saidoun</lastname>\n                <tel>06 58 52 36 42</tel>\n                <mail>saidoun@gmail.com</mail>\n            </identite>\n            <objectif-statut>\n                <initule>Devloppeur</initule>\n                <typeContrat>CDI</typeContrat>\n            </objectif-statut>\n            <profs>\n                <prof>\n                    <detail>Devloppeur</detail>\n                    <datedeb>2024-05-15</datedeb>\n                    <datefin>2024-05-31</datefin>\n                    <titre>GIL</titre>\n                </prof>\n            </profs>\n            <competencesList>\n                <competences>\n                    <titre>xml</titre>\n                    <datedeb>2024-02-08</datedeb>\n                    <datefin>2024-05-30</datefin>\n                </competences>\n            </competencesList>\n            <diplomes>\n                <diplome-niveau>\n                    <intitule>Commerce</intitule>\n                    <niveau>8</niveau>\n                    <date>2023-05-22</date>\n                    <institut>Univeristé de Rouen</institut>\n                </diplome-niveau>\n                <diplome-niveau>\n                    <intitule>Licence</intitule>\n                    <niveau>5</niveau>\n                    <date>2024-05-22</date>\n                    <institut>On ligne</institut>\n                </diplome-niveau>\n            </diplomes>\n            <certifs>\n                <certif>\n                    <datedeb>2024-05-15</datedeb>\n                    <titre>anglais</titre>\n                </certif>\n            </certifs>\n            <langues>\n                <langue>\n                    <lang>français</lang>\n                    <cert>fr</cert>\n                    <nivs>10</nivs>\n                    <nivi>C2</nivi>\n                </langue>\n            </langues>\n\n            <autre>\n                <divers>\n                    <divers>Football</divers>\n                    <comment>football</comment>\n                </divers>\n            </autre>\n        </TestCV>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/insert",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CV with ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv>\n    <nom>LOVELACE</nom>\n    <prenom>Ada</prenom>\n    <date>1815/12/10</date>\n</cv>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/delete?id=4",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCvXmlById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/xml?id=3",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"xml"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCvHtmlById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/html?id=3",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"html"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCVHtml",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/resume",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"resume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCvXML",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cv24-saidoun.cleverapps.io/cv24/resume/xml",
+					"protocol": "https",
+					"host": [
+						"cv24-saidoun",
+						"cleverapps",
+						"io"
+					],
+					"path": [
+						"cv24",
+						"resume",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
