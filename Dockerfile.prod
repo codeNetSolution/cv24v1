@@ -1,0 +1,20 @@
+# Étape de construction
+FROM maven:3.8.4-openjdk-17 as build
+WORKDIR /app
+
+# Copie des fichiers de dépendances pour tirer profit du cache Docker
+COPY ./pom.xml ./pom.xml
+RUN mvn dependency:go-offline
+
+# Copie des sources
+COPY ./src ./src
+
+# Construction sans exécuter les tests
+RUN mvn package -DskipTests
+
+# Étape finale basée sur l'image JRE officielle
+FROM rsunix/yourkit-openjdk17
+COPY --from=build /app/target/cv24v1-0.0.1-SNAPSHOT.war cv24.war
+
+# Exécuter l'application
+CMD ["java", "-jar", "cv24.war"]

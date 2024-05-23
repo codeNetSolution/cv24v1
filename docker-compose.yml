@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db:
+    build: 
+      context: ./dataBase/  # Assuming the Dockerfile is inside the 'dataBase' directory
+      dockerfile: Dockerfile.prod
+    image: db:latest
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: cv_base
+      MYSQL_ROOT_PASSWORD: admin
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - '1020:3306'
+    networks:
+      - app-network
+
+  backend:
+    depends_on:
+      - db
+    build:  # Assuming the Dockerfile is inside the 'backend' directory
+      dockerfile: Dockerfile.prod
+    image: "backend:${API_VERSION:-latest}"
+    restart: always
+    ports: 
+      - '8080:8080'
+    networks:
+      - app-network
+    links:
+      - "db:db"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:

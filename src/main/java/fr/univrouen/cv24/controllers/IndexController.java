@@ -1,26 +1,16 @@
 package fr.univrouen.cv24.controllers;
 
 import fr.univrouen.cv24.Repository.DiplomesRepository;
-import fr.univrouen.cv24.dto.CvListDTO;
 import fr.univrouen.cv24.dto.DiplomeDTO;
 import fr.univrouen.cv24.dto.ObjectifStatutDTO;
 import fr.univrouen.cv24.dto.TestCVDTO;
 import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.services.CVService;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -37,14 +27,22 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String homePage(Model model) {
-		model.addAttribute("projectName","CV 2024");
-		model.addAttribute("projectVersion","1.0");
-		model.addAttribute("teamMembers", new String[]{
-				"Abdelkrim SAIDOUN"
-		});
-		model.addAttribute("universityLogo", "/img/logo.png");
-		
-		return "home";
+
+		try {
+			System.out.println("Accessing home page");
+			model.addAttribute("projectName", "CV 2024");
+			model.addAttribute("projectVersion", "1.0");
+			model.addAttribute("teamMembers", new String[]{
+					"Abdelkrim SAIDOUN"
+			});
+			model.addAttribute("universityLogo", "/img/logo.png");
+
+			return "home";
+		} catch (NoSuchElementException e) {
+			model.addAttribute("id", 1);
+			model.addAttribute("status", "ERROR");
+			return "cv_error";
+		}
 	}
 	
 	@GetMapping("/help")
