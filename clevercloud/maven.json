@@ -4,6 +4,6 @@
         "goal": "package"
     },
     "deploy": {
-        "goal": "docker-compose up"
+        "goal": "mvn spring-boot:run"
     }
 }
