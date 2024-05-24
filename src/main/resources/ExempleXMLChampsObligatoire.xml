@@ -1,0 +1,45 @@
+<TestCV xmlns="http://univ.fr/cv24">
+    <identite>
+        <genre>M.</genre>
+        <firstame>dsdfssf</firstame>
+        <lastname>saidoun</lastname>
+        <tel>06 58 52 36 42</tel>
+        <mail>saidoun@gmail.com</mail>
+    </identite>
+    <objectif-statut>
+        <initule>Devloppeur</initule>
+        <typeContrat>CDI</typeContrat>
+    </objectif-statut>
+    <profs>
+        <prof>
+            <detail>Devloppeur</detail>
+            <datedeb>2024-05-15</datedeb>
+            <datefin>2024-05-31</datefin>
+            <titre>GIL</titre>
+        </prof>
+    </profs>
+    <competencesList>
+        <competences>
+            <titre>xml</titre>
+            <datedeb>2024-02-08</datedeb>
+        </competences>
+    </competencesList>
+    <diplomes>
+        <diplome-niveau>
+            <intitule>Commerce</intitule>
+            <niveau>8</niveau>
+            <date>2023-05-22</date>
+        </diplome-niveau>
+    </diplomes>
+    <certifs>
+    </certifs>
+    <langues>
+        <langue>
+            <lang>français</lang>
+            <cert>fr</cert>
+        </langue>
+    </langues>
+
+    <autre>
+    </autre>
+</TestCV>

@@ -5,21 +5,13 @@ import fr.univrouen.cv24.dto.CvListDTO;
 import fr.univrouen.cv24.dto.TestCVDTO;
 import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.services.CVService;
-import jakarta.xml.bind.Marshaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
 import fr.univrouen.cv24.Repository.*;
-
-import fr.univrouen.cv24.util.Fichier;
-import jakarta.xml.bind.JAXBContext;
-
-import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;

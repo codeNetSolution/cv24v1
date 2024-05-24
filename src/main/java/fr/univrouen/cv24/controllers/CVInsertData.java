@@ -6,18 +6,11 @@ import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.services.XmlValidationService;
 import jakarta.xml.bind.helpers.DefaultValidationEventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import jakarta.xml.bind.*;
-import org.xml.sax.SAXException;
 
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.XMLConstants;
-import java.io.File;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
@@ -38,8 +31,6 @@ public class CVInsertData {
     @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<String> insertCV(@RequestBody String xmlData) {
         try {
-            System.out.println("XML Received: " + xmlData); // Log the raw XML data
-
             if (!xmlValidationService.validateXml(xmlData)) {
                 return ResponseEntity.badRequest().body(createResponse(null, "ERROR", "INVALIDXML", null));
             }

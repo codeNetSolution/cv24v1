@@ -12,9 +12,9 @@ public class GlobalCorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // Configurez pour permettre toutes les routes, ajustez selon vos besoins
+
                 registry.addMapping("/**")
-                        .allowedOrigins("*")  // Attention: ouvrir totalement CORS n'est pas sécurisé pour la production!
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
             }

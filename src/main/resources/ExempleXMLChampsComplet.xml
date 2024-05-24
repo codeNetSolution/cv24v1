@@ -1,36 +1,42 @@
  <TestCV xmlns="http://univ.fr/cv24">
             <identite>
                 <genre>M.</genre>
-                <firstame>xxxxqq</firstame>
-                <lastname>sssssss</lastname>
-                <tel>07 52 85 10 31</tel>
-                <mail>karim@gmail.com</mail>
+                <firstame>dsdfssf</firstame>
+                <lastname>saidoun</lastname>
+                <tel>06 58 52 36 42</tel>
+                <mail>saidoun@gmail.com</mail>
             </identite>
             <objectif-statut>
-                <initule>chef de projet</initule>
-                <typeContrat>cdi</typeContrat>
+                <initule>Devloppeur</initule>
+                <typeContrat>CDI</typeContrat>
             </objectif-statut>
             <profs>
                 <prof>
-                    <detail>dddddd</detail>
+                    <detail>Devloppeur</detail>
                     <datedeb>2024-05-15</datedeb>
                     <datefin>2024-05-31</datefin>
-                    <titre>sssff</titre>
+                    <titre>GIL</titre>
                 </prof>
             </profs>
             <competencesList>
                 <competences>
-                    <titre>qdqd</titre>
-                    <datedeb>2024-05-08</datedeb>
+                    <titre>xml</titre>
+                    <datedeb>2024-02-08</datedeb>
                     <datefin>2024-05-30</datefin>
                 </competences>
             </competencesList>
             <diplomes>
                 <diplome-niveau>
-                    <intitule>dqdqd</intitule>
+                    <intitule>Commerce</intitule>
+                    <niveau>8</niveau>
+                    <date>2023-05-22</date>
+                    <institut>Univeristé de Rouen</institut>
+                </diplome-niveau>
+                <diplome-niveau>
+                    <intitule>Licence</intitule>
                     <niveau>5</niveau>
-                    <date>2024-05-07</date>
-                    <institut>bac</institut>
+                    <date>2024-05-22</date>
+                    <institut>On ligne</institut>
                 </diplome-niveau>
             </diplomes>
             <certifs>
@@ -50,8 +56,8 @@
 
             <autre>
                 <divers>
-                    <divers>qdqsfqf</divers>
-                    <comment>qsdqsd</comment>
+                    <divers>Football</divers>
+                    <comment>football</comment>
                 </divers>
             </autre>
         </TestCV>

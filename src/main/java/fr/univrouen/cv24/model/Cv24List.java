@@ -1,6 +1,6 @@
 package fr.univrouen.cv24.model;
 
-import fr.univrouen.cv24.model.Cv24;
+
 import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
@@ -17,5 +17,4 @@ public class Cv24List {
         this.list = list;
     }
 
-    // Ensure getters and setters are present and correct
 }
